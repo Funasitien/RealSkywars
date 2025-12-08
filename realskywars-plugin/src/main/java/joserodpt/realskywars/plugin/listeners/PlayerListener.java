@@ -534,18 +534,20 @@ public class PlayerListener implements Listener {
         if (e.getDamager() instanceof Player) {
             RSWPlayer hitter = rs.getPlayerManagerAPI().getPlayer((Player) e.getDamager());
 
+            if (hitter.getState() == RSWPlayer.PlayerState.SPECTATOR
+                    || hitter.getState() == RSWPlayer.PlayerState.EXTERNAL_SPECTATOR) {
+                e.setCancelled(true);
+            }
+
             if (e.getEntity() instanceof Player) {
                 Player whoWasHit = (Player) e.getEntity();
+
                 RSWPlayer hurt = rs.getPlayerManagerAPI().getPlayer(whoWasHit);
+
                 if (hitter.getTeam() != null && hitter.getTeam().getMembers().contains(hurt)) {
                     TranslatableLine.TEAMMATE_DAMAGE_CANCEL.send(hitter, true);
                     e.setCancelled(true);
                 }
-
-            }
-
-            if (hitter.getState() == RSWPlayer.PlayerState.SPECTATOR || hitter.getState() == RSWPlayer.PlayerState.EXTERNAL_SPECTATOR) {
-                e.setCancelled(true);
             }
         }
     }
