@@ -19,6 +19,7 @@ import joserodpt.realskywars.api.RealSkywarsAPI;
 import joserodpt.realskywars.api.leaderboards.RSWLeaderboard;
 import joserodpt.realskywars.api.managers.MapManagerAPI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import org.apache.logging.log4j.util.Strings;
 import org.bukkit.OfflinePlayer;
 import org.jetbrains.annotations.NotNull;
 
@@ -69,7 +70,7 @@ public class RealSkywarsPlaceholderAPI extends PlaceholderExpansion {
     @NotNull
     @Override
     public String getAuthor() {
-        return rsa.getPlugin().getDescription().getAuthors().toString();
+        return Strings.join(rsa.getPlugin().getDescription().getAuthors(), ',');
     }
 
     /**

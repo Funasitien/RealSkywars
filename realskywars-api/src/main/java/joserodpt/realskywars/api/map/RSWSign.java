@@ -58,10 +58,14 @@ public class RSWSign {
     }
 
     private Block getGlass(Block b) {
-        WallSign signData = (WallSign) b.getState().getBlockData();
-        BlockFace attached = signData.getFacing().getOppositeFace();
+        if (b.getState().getBlockData() instanceof WallSign) {
+            WallSign signData = (WallSign) b.getState().getBlockData();
+            BlockFace attached = signData.getFacing().getOppositeFace();
 
-        return b.getRelative(attached);
+            return b.getRelative(attached);
+        } else {
+            return b.getRelative(BlockFace.DOWN);
+        }
     }
 
     public Block getBlock() {
