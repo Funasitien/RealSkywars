@@ -38,7 +38,7 @@
     <repository>
       <id>github</id>
       <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/ojoserodpt/RealSkywars</url>
+      <url>https://maven.pkg.github.com/joserodpt/RealSkywars</url>
     </repository>
   </distributionManagement>
 
